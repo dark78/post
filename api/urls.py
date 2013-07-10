@@ -1,13 +1,11 @@
 from django.conf.urls import patterns, include, url
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'journals', views.JournalViewSet)
+router.register(r'subscriber', views.SubscriberViewSet)
+router.register(r'publishers', views.PublisherViewSet)
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'Post.views.home', name='home'),
-    # url(r'^Post/', include('Post.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-)
+    url(r'^', include(router.urls))
+);
